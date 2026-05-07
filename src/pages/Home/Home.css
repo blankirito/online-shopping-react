@@ -186,9 +186,18 @@ code {
   aspect-ratio: 16 / 5;
 }
 
-/* 手机 */
 @media (max-width: 768px) {
   .mySwiper {
-    aspect-ratio: 16 / 8;
+    aspect-ratio: 16 / 9;
   }
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
 }
