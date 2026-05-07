@@ -1,108 +1,65 @@
-:root {
-  --text: #000000;
-  --text-h: #000000;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-
-  color: var(--text);
-  background: var(--bg);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 /* =========================
-   RESET
+   GLOBAL RESET
 ========================= */
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-
-  background: white;
-
-  overflow-x: hidden;
-}
 
 * {
   box-sizing: border-box;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: white;
+}
+
 #root {
   width: 100%;
-  max-width: 100%;
-  min-height: 100svh;
+}
 
-  overflow-x: hidden;
+/* =========================
+   PAGE LAYOUT (核心修复点)
+========================= */
+
+.page {
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;   /* ⭐统一 spacing 核心 */
 }
 
 /* =========================
    TYPOGRAPHY
 ========================= */
 
-h1,
-h2,
-h3,
-p {
-  font-family: var(--heading);
-  color: var(--text-h);
+h1, h2, h3, p {
   margin: 0;
 }
 
 h1 {
-  font-size: 56px;
-  margin-bottom: 24px;
-}
-
-h2 {
-  font-size: 24px;
-}
-
-h3 {
-  font-size: 16px;
+  font-size: 40px;
+  margin-bottom: 8px;
 }
 
 /* =========================
-   PAGE
+   SWIPER BANNER
 ========================= */
-
-.page {
-  padding: 16px;
-}
-
-.layout {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* =========================
-   BANNER / SWIPER
-========================= */
-
-.slidingcontent {
-  width: 100%;
-}
 
 .mySwiper {
   width: 100%;
-
   border-radius: 16px;
   overflow: hidden;
 
+  /* ⭐关键：固定视觉比例 */
   aspect-ratio: 16 / 5;
+}
+
+/* mobile 调整 */
+@media (max-width: 768px) {
+  .mySwiper {
+    aspect-ratio: 16 / 9;
+  }
 }
 
 .banner-img {
@@ -110,8 +67,6 @@ h3 {
   height: 100%;
 
   object-fit: cover;
-  object-position: center;
-
   display: block;
 }
 
@@ -122,73 +77,52 @@ h3 {
 .grid {
   display: grid;
 
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
 
-  gap: 16px;
+  gap: 12px;
 }
 
 .card {
   border: 1px solid #ddd;
   border-radius: 12px;
 
-  padding: 12px;
+  padding: 10px;
 
-  background: white;
-
-  transition: 0.2s ease;
   cursor: pointer;
+
+  transition: 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 
 .card img {
   width: 100%;
   aspect-ratio: 1 / 1;
-
   object-fit: cover;
 
   border-radius: 10px;
-
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 /* =========================
-   MOBILE
+   MOBILE OPTIMIZATION
 ========================= */
 
 @media (max-width: 768px) {
 
   .page {
     padding: 10px;
+    gap: 12px;
   }
 
   h1 {
-    font-size: 32px;
-    margin-bottom: 16px;
-  }
-
-  .mySwiper {
-    aspect-ratio: 16 / 10;
-    border-radius: 12px;
+    font-size: 28px;
   }
 
   .grid {
     grid-template-columns: repeat(2, 1fr);
-
     gap: 10px;
-  }
-
-  .card {
-    padding: 8px;
-  }
-
-  h3 {
-    font-size: 14px;
-  }
-
-  p {
-    font-size: 13px;
   }
 }
